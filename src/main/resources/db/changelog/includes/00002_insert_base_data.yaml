@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: khaln
+      changes:
+        - sqlFile:
+            path: 00002_insert_base_data.sql
+            relativeToChangelogFile: true

@@ -1,0 +1,1 @@
+insert into service_role(id, name) values (1, 'USER'), (2, 'SHOP_ADMIN'), (3, 'CUSTOMER');

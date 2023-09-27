@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/db/changelog/includes/00001_initial_schema.yaml
+  - include:
+      file: classpath:/db/changelog/includes/00002_insert_base_data.yaml
+  - include:
+      file: classpath:/db/changelog/includes/00003_insert_test_data.yaml
+#  - diffChangeLogFile: src/main/resources/db/changelog/includes/${gradle.build.timestamp}_changelog.yaml
+  - diffChangeLogFile: src/main/resources/db/changelog/includes/changelog.yaml
+  - url: jdbc:postgresql://localhost:65432/mydatabase
+  - driver: org.postgresql.Driver
+  - username: myuser
+  - password: secret
+  - referenceUrl: hibernate:spring:com.digital.demo.domain?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+#  - referenceDriver: liquibase.ext.hibernate.database.connection.HibernateDriver
+  - verbose: true
+  - logging: debug

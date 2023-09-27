@@ -1,0 +1,373 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  1
+       author:  khaln
+       changes:
+#user
+         -  createTable:
+              tableName: service_role
+              columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: name
+                    type: varchar(100)
+                    constraints:
+                      nullable: false
+         - createTable:
+             tableName: service_user
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: username
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+                     unique: true
+               - column:
+                   name: email
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+                     unique: true
+               - column:
+                   name: password
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+         - createTable:
+             tableName: service_user_role
+             columns:
+               - column:
+                   name: user_id
+                   type: int
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: role_id
+                   type: int
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+         - addForeignKeyConstraint:
+             constraintName: fk_service_userrole_user
+             baseTableName: service_user_role
+             baseColumnNames: user_id
+             referencedTableName: service_user
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_service_userrole_role
+             baseTableName: service_user_role
+             baseColumnNames: role_id
+             referencedTableName: service_role
+             referencedColumnNames: id
+#shop
+         -  createTable:
+              tableName:  shop
+              columns:
+                -  column:
+                     name:  id
+                     type:  int
+                     autoIncrement:  true
+                     constraints:
+                       primaryKey:  true
+                       nullable:  false
+                -  column:
+                     name:  branch
+                     type:  varchar(100)
+                     constraints:
+                       nullable: false
+                -  column:
+                     name:  address
+                     type:  varchar(1000)
+                     constraints:
+                       nullable:  false
+                - column:
+                    name: contract
+                    type: varchar(10000)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: opening_time
+                    type: varchar(5)
+                - column:
+                    name: closing_time
+                    type: varchar(5)
+
+         - createTable:
+             tableName: shop_admin
+             columns:
+               - column:
+                   name: user_id
+                   type: int
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: shop_id
+                   type: int
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+         - addForeignKeyConstraint:
+             constraintName: fk_shopadmin_user
+             baseTableName: shop_admin
+             baseColumnNames: user_id
+             referencedTableName: service_user
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_shopadmin_shop
+             baseTableName: shop_admin
+             baseColumnNames: shop_id
+             referencedTableName: shop
+             referencedColumnNames: id
+
+         - createTable:
+             tableName: dish
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: name
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: price
+                   type: float
+                   constraints:
+                     nullable: false
+               - column:
+                   name: currency
+                   type: varchar(5)
+                   constraints:
+                     nullable: false
+         - createTable:
+             tableName: shop_dish
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: ref_shop_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: ref_dish_id
+                   type: int
+               - column:
+                   name: name
+                   type: varchar(100)
+               - column:
+                   name: price
+                   type: float
+               - column:
+                   name: currency
+                   type: varchar(5)
+         - addForeignKeyConstraint:
+             constraintName: fk_shopdish_shop
+             baseTableName: shop_dish
+             baseColumnNames: ref_shop_id
+             referencedTableName: shop
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_shopdish_dish
+             baseTableName: shop_dish
+             baseColumnNames: ref_dish_id
+             referencedTableName: dish
+             referencedColumnNames: id
+
+         - createTable:
+             tableName: shop_queue
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: shop_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: name
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: max_quantity
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: current_index
+                   type: bigint
+                   constraints:
+                     nullable: false
+         - addForeignKeyConstraint:
+             constraintName: fk_shopqueue_shop
+             baseTableName: shop_queue
+             baseColumnNames: shop_id
+             referencedTableName: shop
+             referencedColumnNames: id
+
+#customer
+         - createTable:
+             tableName: customer
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: name
+                   type: varchar(100)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: phone
+                   type: varchar(12)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: address
+                   type: varchar(1000)
+                   constraints:
+                     nullable: false
+               - column:
+                   name: user_id
+                   type: int
+                   constraints:
+                     nullable: false
+         - addForeignKeyConstraint:
+             constraintName: fk_customer_user
+             baseTableName: customer
+             baseColumnNames: user_id
+             referencedTableName: service_user
+             referencedColumnNames: id
+
+#orders
+         - createTable:
+             tableName: service_order
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: customer_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: status
+                   type: varchar(20)
+                   defaultValue: 'ORDERED'
+                   constraints:
+                     nullable: false
+               - column:
+                   name: shop_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: shop_queue_id
+                   type: int
+               - column:
+                   name: queue_index
+                   type: bigint
+               - column:
+                   name: ordered_time
+                   type: datetime
+                   constraints:
+                     nullable: false
+               - column:
+                   name: updated_time
+                   type: datetime
+         - createTable:
+             tableName: service_order_detail
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: order_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: shop_dish_id
+                   type: int
+                   constraints:
+                     nullable: false
+               - column:
+                   name: quantity
+                   type: int
+                   defaultValue: '1'
+                   constraints:
+                     nullable: false
+         - addForeignKeyConstraint:
+             constraintName: fk_service_orderdetail_order
+             baseTableName: service_order_detail
+             baseColumnNames: order_id
+             referencedTableName: service_order
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_service_orderdetail_shopdish
+             baseTableName: service_order_detail
+             baseColumnNames: shop_dish_id
+             referencedTableName: shop_dish
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_service_order_customer
+             baseTableName: service_order
+             baseColumnNames: customer_id
+             referencedTableName: customer
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_service_order_shop
+             baseTableName: service_order
+             baseColumnNames: shop_id
+             referencedTableName: shop
+             referencedColumnNames: id
+         - addForeignKeyConstraint:
+             constraintName: fk_service_order_shopqueue
+             baseTableName: service_order
+             baseColumnNames: shop_queue_id
+             referencedTableName: shop_queue
+             referencedColumnNames: id

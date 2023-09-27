@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:65432/mydatabase
+    username: myuser
+    password: secret
+demo:
+  app:
+    jwtSecret: MWRlbW9kZW1vMDFkZW1vZGVtbzAxZGVtb2RlbW8weHg=
+    jwtExpirationMs: 86400000
