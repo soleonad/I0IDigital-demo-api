@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "353935be-0a8e-48b2-b8af-148bf6f615da",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27194011"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"shop3admin\",\n    \"email\": \"shop3.admin@example.com\",\n    \"password\": \"12345678\",\n    \"role\": [\"shop_admin\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"cust1ali\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"shop2admin\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shop",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMWFkbWluIiwiaWF0IjoxNjk1NzQxODE4LCJleHAiOjE2OTU4MjgyMTh9.rVQhH4RWkDGoBAo5NDuNFRlXBNH_VMFcgyBSKm4v_bE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/shop/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shop",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "menu",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0MWFsaSIsImlhdCI6MTY5NTgzNjU5MywiZXhwIjoxNjk1OTIyOTkzfQ.RRYzZoUorWl1z1rlTYu0v5b2UNaCb3BpbamxXcutc-E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        {\n            \"shopDishId\": 6,\n            \"quantity\": 2\n        },\n        {\n            \"shopDishId\": 7,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/menu/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0MWFsaSIsImlhdCI6MTY5NTgzNjU5MywiZXhwIjoxNjk1OTIyOTkzfQ.RRYzZoUorWl1z1rlTYu0v5b2UNaCb3BpbamxXcutc-E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        {\n            \"shopDishId\": 6,\n            \"quantity\": 2\n        },\n        {\n            \"shopDishId\": 7,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/menu/2/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"menu",
+						"2",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0MWFsaSIsImlhdCI6MTY5NTc0MzEwNCwiZXhwIjoxNjk1ODI5NTA0fQ.hFlHyCxe8UJQMy3hfZb4ArfnwW0n5CeoMHKqSSjUKDA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/order/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view all orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/2/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"2",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queue order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        {\n            \"shopDishId\": 6,\n            \"quantity\": 2\n        },\n        {\n            \"shopDishId\": 7,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/order/1/queuePush",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"order",
+						"1",
+						"queuePush"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queue next",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        {\n            \"shopDishId\": 6,\n            \"quantity\": 2\n        },\n        {\n            \"shopDishId\": 7,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/2/queueNext",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"2",
+						"queueNext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "process order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        {\n            \"shopDishId\": 6,\n            \"quantity\": 2\n        },\n        {\n            \"shopDishId\": 7,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/order/1/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"order",
+						"1",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queue pop",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/2/queuePop",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"2",
+						"queuePop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "complete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaG9wMmFkbWluIiwiaWF0IjoxNjk1Nzk4NDM1LCJleHAiOjE2OTU4ODQ4MzV9.vHbpSpJ2xCz6SgAdzXDyDiayfEOTjOH0OUtZJL7S4ok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/shopProcess/order/1/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shopProcess",
+						"order",
+						"1",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
